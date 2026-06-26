@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client"
 import { createClient } from "@libsql/client"
-import { PrismaLibSQL } from "@prisma/adapter-libsql"
+import { PrismaLibSql } from "@prisma/adapter-libsql"
 
 const globalForPrisma = globalThis
 
@@ -12,7 +12,7 @@ if (!globalForPrisma.prisma) {
   const libsql = createClient({
     url: connectionString,
   })
-  const adapter = new PrismaLibSQL(libsql)
+  const adapter = new PrismaLibSql(libsql)
   globalForPrisma.prisma = new PrismaClient({ adapter })
 }
 
